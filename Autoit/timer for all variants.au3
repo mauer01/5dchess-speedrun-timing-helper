@@ -10,6 +10,11 @@
 #include <AutoItConstants.au3>
 OnAutoItExitRegister("_exit")
 local $pid
+$pgnrecorder = "5dpgn recorder specialised for all variants and puzzle speedrun.exe"
+If FileExists($pgnrecorder) = False Then
+	MsgBox(16,"Error couldnt find customized pgn reader","couldnt find the customized pgn reader under the name" & @CRLF & $pgnrecorder)
+	Exit
+EndIf
 #Region ### START Koda GUI section ### Form=
 $Form1_1 = GUICreate("5d chess timer helper", 262, 69, 806, 274)
 $Input1 = GUICtrlCreateInput("{f1}", 8, 32, 121, 21)
@@ -20,14 +25,13 @@ GUICtrlSetState($button2,128)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
-
 While 1
 	$nMsg = GUIGetMsg()
 	Switch $nMsg
 		Case $GUI_EVENT_CLOSE
 			Exit
 		Case $button1
-			$pid = Run("5dpgn recorder specialised for all variants and puzzle speedrun.exe","",@SW_HIDE,$STDOUT_CHILD)
+			$pid = Run($pgnrecorder,"",@SW_HIDE,$STDOUT_CHILD)
 		    if @error Then MsgBox(64,@error,"error occured while starting the pgn reader pls provide number in the title")
 			ProcessWait($pid)
 			GUICtrlSetState($button1,128)
