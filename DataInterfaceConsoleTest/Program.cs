@@ -1,4 +1,4 @@
-﻿using FiveDChessDataInterface;
+using FiveDChessDataInterface;
 using System;
 using System.Threading;
 using System.IO;
@@ -89,11 +89,6 @@ namespace DataInterfaceConsoleTest
                         };
                     Func<int,string> mkT = (t)=>{return $"{t+cosmeticTurnOffset}";};
                     Func<int,int,string> mkLT = (l,t)=>{return $"({mkL(l)}T{mkT(t)})";};
-                    if (cnt==0 && oldCnt>5 && !written){
-                        var filename = "5dpgn"+DateTime.Now.ToString("yyyyMMdd_HHmmss")+".txt";
-                        File.WriteAllText(filename,lastRun);
-                        Console.WriteLine($"written to file '{filename}'");
-                    }
                     if (oldCnt==0){
                         times = new List<int>();
                         written = false;
@@ -192,17 +187,14 @@ namespace DataInterfaceConsoleTest
                     if (( state==GameState.EndedBlackWon
                           || state==GameState.EndedDraw
                           || state==GameState.EndedWhiteWon)
-                        && !written
-                        && cnt>5){
+                        && !written){
                         written = true;
-                        var filename = "5dpgn"+DateTime.Now.ToString("yyyyMMdd_HHmmss")+".txt";
-                        File.WriteAllText(filename,lastRun);
-                        Console.WriteLine($"written to file '{filename}'");
+                        Console.WriteLine($"{state}");
                     }
                 }
                 else
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(1);
                 }
             }
         }
