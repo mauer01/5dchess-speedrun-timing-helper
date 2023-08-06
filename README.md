@@ -1,6 +1,6 @@
 # 5D Chess With Multiverse Time Travel speedrun timing helper
 
-the c part is penteracts 5d pgn recorder which I customized its output so its now checking every millisecond for changes in the gamestate and has some other customizations in the output,
+the c part is penteracts 5d pgn recorder which I customized so its now checking every millisecond for changes in the gamestate and has some other customizations in the output,
 most notably it doesnt create files anymore and just sends the gamestate as soon as the game ends.
 
 The AutoIT part is reading that Output and triggers the custom key.
