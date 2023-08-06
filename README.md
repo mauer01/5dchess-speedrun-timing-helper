@@ -1,16 +1,22 @@
-# 5D Chess With Multiverse Time Travel Notation Recorder
+# 5D Chess With Multiverse Time Travel speedrun timing helper
 
-An **unofficial** program based on https://github.com/GHXX/FiveDChessDataInterface for saving notation from games of [5D Chess With Multiverse Time Travel](https://store.steampowered.com/app/1349230/5D_Chess_With_Multiverse_Time_Travel/).
+the c part is penteracts 5d pgn recorder which I customized its output so its now checking every millisecond for changes in the gamestate and has some other customizations in the output,
+most notably it doesnt create files anymore and just sends the gamestate as soon as the game ends.
+
+The AutoIT part is reading that Output and triggers the custom key.
+
+If you wanna compile everything yourself you need to rename the programm.exe of the pgn recorder into "5dpgn recorder specialised for all variants and puzzle speedrun.exe" 
+or change the pgnrecorder name in the autoit script so it will find and start the correct programm.
 
 ## Usage
-Start this program while 5D chess is running (or vice versa). After you finish a game with at least 4 moves, a file with the name `5dpgn<date>_<time>.txt` will be saved in the folder you ran the program from. This contains the move information, but doesn't always contain the name of the variant.
-It will play the sound from Tick.wav when a player in a timed game has used 1/3 of their time since the start of their turn or the previous tick.
-Note: The files produced contain your timezone (as an offset from UTC), so if you consider that information sensitve, remove that field or convert it to UTC (and don't forget to change the date if necessary) before sharing. It may also be possible to infer your timezone from the filename unless that is also changed.
+
+Download the latest release keep the 2 programms together and start the Speedrun timing helper.exe 
+once you setup your split software (e.g. WSplit) you just need to press start press your keybind once to start the Split software 
+and once you won the programm will instantly press the button you assigned for you (standart is F1)
 
 ## Disclaimer
 While it should be stable for the most part, this program may still cause crashes/desyncs or other unexpected/unwanted behaviour, hence why the developers of this project cannot be held liable for any damage caused.
 
-## Plans
-Config file (name, which tags to include, sound file, how and whether to include time, always use white's perspective)
-If you close the game then restart it, the recorder should record games from the second run. At the moment it doesn't
-It would save a click or 2 (and make it harder to forget to start the recorder) if the recorder started the game if it's not already running.
+## credits
+
+full credits to the base branches of penteract and GHXX
